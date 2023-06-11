@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_classb/auth_system/signup_screen.dart';
+import 'package:flutter_classb/auth_system/login_screen.dart';
 import 'package:flutter_classb/home_screen/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:transition/transition.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +29,35 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 20,
               ),
               TextFormField(
+                keyboardType: TextInputType.name,
+                decoration: InputDecoration(
+                  prefix: const Padding(
+                    padding: EdgeInsets.only(right: 15),
+                    child: Icon(
+                      Icons.email,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  label: const Text("Name"),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  prefix: const Icon(
-                    Icons.email,
+                  prefix: const Padding(
+                    padding: EdgeInsets.only(right: 15),
+                    child: Icon(
+                      Icons.email,
+                    ),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 20,
@@ -45,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                padding: const EdgeInsets.only(top: 10, bottom: 10),
                 child: TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
@@ -66,12 +91,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                    prefix: const Padding(
+                      padding: EdgeInsets.only(right: 15),
+                      child: Icon(
+                        Icons.password,
+                      ),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    label: const Text("Confirmation Password"),
+                  ),
+                ),
+              ),
               InkWell(
                 onTap: () {
                   Navigator.push(
                       context,
                       Transition(
-                          child: const SignUp(),
+                          child: const LoginScreen(),
                           transitionEffect: TransitionEffect.FADE));
                 },
                 child: Padding(
@@ -79,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     bottom: 10,
                   ),
                   child: Text(
-                    "Don't have an account? SingUp here",
+                    "Have an account? Login here",
                     style: GoogleFonts.lobster(),
                   ),
                 ),
@@ -92,7 +139,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: const HomeScreen(),
                             transitionEffect: TransitionEffect.FADE));
                   },
-                  child: const Text("Login")),
+                  child: Text(
+                    "SignUp",
+                    style: GoogleFonts.lobster(
+                      fontSize: 24,
+                    ),
+                  )),
               // InkWell(
               //   onTap: () {
               //     print("Hello");

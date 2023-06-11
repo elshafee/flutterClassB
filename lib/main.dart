@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_classb/auth_system/login_screen.dart';
+import 'package:flutter_classb/general_screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginScreen(),
+      routes: {
+        '/login': (context) => const LoginScreen(),
+        '/splash': (context) => const SplashScreen()
+      },
+      debugShowCheckedModeBanner: false,
+      home: const SplashScreen(),
     );
   }
 }
