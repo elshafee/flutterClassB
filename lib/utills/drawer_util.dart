@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_classb/basic_widget_app/bottom_navigation.dart';
 import 'package:flutter_classb/bmi_calculator/bmi_calculator.dart';
 import 'package:flutter_classb/home_screen/home_screen.dart';
+import 'package:flutter_classb/todolist_app/todolist_app.dart';
 import 'package:transition/transition.dart';
 
 class Drawe extends StatefulWidget {
@@ -64,6 +65,17 @@ class _DraweState extends State<Drawe> {
             },
             leading: const Icon(Icons.calculate),
             title: const Text("BMI Calculator"),
+          ),
+          ListTile(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  Transition(
+                      child: const TodoListApp(),
+                      transitionEffect: TransitionEffect.TOP_TO_BOTTOM));
+            },
+            leading: const Icon(Icons.calendar_today_outlined),
+            title: const Text("TodoList App"),
           ),
         ],
       ),
